@@ -1,0 +1,35 @@
+.container {
+    display: block;
+    width: 1080px;
+    margin: 0 auto;
+    /* white-space:normal;
+    word-break:break-all;
+    word-wrap:break-word;  */
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clear-float:after,
+.clear-float:before {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9 {
+    
+}

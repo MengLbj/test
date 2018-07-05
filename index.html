@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>香菇街</title>
+    <link href="https://cdn.bootcss.com/normalize/8.0.0/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/main.css">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <style>
+        table
+        {
+            border-collapse:collapse;
+        }
+
+        table, th, td
+        {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        上传文件 ： <input type="file" name = "file" id = "fileId" /> 
+        <button  type = "submit" name = "btn" value = "提交" id = "btnId" onclick="check()" /> 提交
+    </div>
+    <select name="select" id="select" class="select">
+       
+    </select>
+    <input class="cj" type="text" />
+    <div class="chart"></div>
+
+
+    <table summary="人员信息表" id="table">
+        
+    </table> 
+
+    <script>
+        var fileString;
+
+        function check() {
+            var objFile = document.getElementById("fileId");
+            if(objFile.value == "") {
+                alert("不能空")
+            }
+        
+            console.log(objFile.files[0].size); // 文件字节数
+            
+            var files = $('#fileId').prop('files');//获取到文件列表
+            if(files.length == 0){
+                alert('请选择文件');
+            }else{
+                var reader = new FileReader();//新建一个FileReader
+                reader.readAsText(files[0], "UTF-8");//读取文件 
+                reader.onload = function(evt){ //读取完文件之后会回来这里
+                    fileString = evt.target.result; // 读取文件内容
+                    console.log(fileString);
+                    var result = fileString.split(',');
+                    console.log(result);
+                    var o = document.getElementById("select");
+                    console.log(o);
+                    for(var i = 0; i < data.length; i++)
+                    {
+                        var op = document.createElement("option");
+                        op.setAttribute("value", data[i]);
+                        op.innerHTML = data[i];
+                        o.appendChild(op);
+                    }
+                    create(data);
+                }
+            }
+        }
+
+        var data = [34, 45, 56, 67];
+
+        function getData(i) {
+            var index = ParseInt(document.getElementsByClassName("i").value);
+            document.getElementsByClassName("cj").value = data[index];
+        }
+
+        function create(data) {
+            var table = document.getElementById("table");
+            //var table = document.createElement("table");
+            var tr = document.createElement("tr");
+
+            var th = document.createElement("th");
+            th.setAttribute("value", 1)
+            th.innerHTML = "";
+            tr.appendChild(th);
+
+            for(var i = 0; i < 4; i++)
+            {
+                var th = document.createElement("th");
+                th.setAttribute("value", 1)
+                th.innerHTML = "1";
+                tr.appendChild(th);
+            }
+            table.appendChild(tr);
+
+            //del(document.getElementById("table"));
+            document.body.removeChild(document.getElementById("table"));
+
+            // table.setAttribute("value", data[i]);
+            // table.innerHTML = data[i];
+            // table.appendChild(op);
+        }
+
+        function del(ob){
+            ob.parentNode.parentNode.removeChild(ob.parentNode);
+        }
+    </script>      
+</body>
+</html>
